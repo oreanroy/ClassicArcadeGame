@@ -1,0 +1,19 @@
+{
+  "name": "classic_arcade_game",
+  "version": "1.0.0",
+  "description": "the classic arcade game ",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oreanroy/ClassicArcadeGame.git"
+  },
+  "author": "oreanroy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oreanroy/ClassicArcadeGame/issues"
+  },
+  "homepage": "https://github.com/oreanroy/ClassicArcadeGame#readme"
+}
