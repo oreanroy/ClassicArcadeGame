@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+var Enemy = function(x=0, y=0, speed=100) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -18,7 +18,18 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    this.speed+=this.speed*dt;
+    this.x+=this.speed*dt;
+    if(this.x>=505){
+        this.x = -100;
+        this.speed = 100 + Math.floor(Math.random()*400);
+    }
+    if(player.x>this.x-55 && 
+        player.x < this.x-35 && 
+        player.y<this.y-20 && 
+        player.y>this.y-30){
+            player.x = 205;
+            player.y = 380;
+    }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -30,28 +41,41 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 class player{
-    constructor(x, y){
-        this.sprite = 'images/char-cat-girl.png';
+    constructor(x, y, speed){
+        this.sprite = 'images/char-boy.png';
         this.x = 5;
         this.y = 0;
+        this.speed =speed;
         
     }
     update(){
-        this.render();
+        //prevent player from moving off the grid
+        if(this.y>380)
+            this.y = 380;
+        if(this.x>480)
+            this.x = 480;
+        if(this.x<0)
+            this.x = 0;
+        if(this.y<0){
+            alert("you won");
+            this.x = 200;
+            this.y = 380;
+        }
     }
     render(){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
         //ctx.drawImage(Resources.get(this.guy), this.x, this.y);
     }
     handleInput(pos){
-        if(pos == 37 && x>=83) 
+        console.log(pos);
+        if(pos == 'left' && this.x>=83) 
             this.x-=83;
             //101
-        if(pos == 38 && y<600)
+        if(pos == 'up' && this.y<600)
             this.y+=101;
-        if(pos == 39 && x<500) 
+        if(pos == 'rigth' && this.x<500) 
             this.x+=83;
-        if(pos == 40 && y>=101)
+        if(pos == 'down' && this.y>=101)
             this.y-=101;
     }
 }
@@ -74,9 +98,10 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-player = new player();
+player = new player(600, 100, 50);
 let allEnemies = []
-for(i=0;i<4;i++){
-    enemy = new Enemy(40, 50, 100);
-    allEnemies[i]=enemy
+var pos = [70, 140, 220];
+for(i=0;i<3;i++){
+    enemy = new Enemy(0, pos[i], 150+Math.floor(Math.random()*40));
+    allEnemies[i]=enemy;
 }
