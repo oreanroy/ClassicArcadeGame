@@ -30,8 +30,8 @@ Enemy.prototype.update = function(dt) {
         player.y<=this.y && 
         player.y+60>=this.y){//to check if the enemy and player are touching.
             alert("You were eaten by the bug try again.");
-            player.x = 205;
-            player.y = 380;
+            player.x = 200;
+            player.y = 400;
     }
 };
 
@@ -62,21 +62,16 @@ class player{
         if(this.y<0){
             
             this.x = 200;
-            this.y = 380;
+            this.y = 400;
             alert("you won");
         }
     }
     render(){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-        //ctx.drawImage(Resources.get(this.guy), this.x, this.y);
     }
-    handleInput(pos){
-      //  console.log(pos);
-        //console.log(this.x);
-       // console.log(this.y);
+    handleInput(pos){//to update the postion of player on cursor press
         if(pos == 'left' && this.x>=83) 
             this.x-=100;
-            //101
         if(pos == 'up' && this.y>-60)
             this.y-=80;
         if(pos == 'right' && this.x<400) 
