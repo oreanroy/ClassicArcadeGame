@@ -9,4 +9,8 @@ The arcade game written based on JavaScript gaming engine.
     <li><h2>Have Fun!!!</h2></li>
 </ul>
 <hr>
+<h1>You try the game <a href="https://oreanroy.github.io/ClassicArcadeGame/">here.</a></h1>
+<hr>
+<h1>Running trial</h1>
+<embed src="https://oreanroy.github.io/ClassicArcadeGame/" style="width:500px; height: 300px;">
 <h2>Further improvements are coming.</h2>
