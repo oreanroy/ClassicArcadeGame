@@ -1,6 +1,6 @@
 // Enemies our player must avoid
 
-var Enemy = function(x=0, y=0, speed=100) {
+var Enemy = function(x, y, speed) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
